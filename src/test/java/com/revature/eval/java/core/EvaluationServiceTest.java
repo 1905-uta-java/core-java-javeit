@@ -161,27 +161,27 @@ public class EvaluationServiceTest {
 		final String actualNumber = evaluationService.cleanPhoneNumber("(223) 456-7890");
 		assertEquals(expectedNumber, actualNumber);
 	}
-
+	
 	@Test
 	public void cleansNumbersWithDots() {
 		final String expectedNumber = "2234567890";
 		final String actualNumber = evaluationService.cleanPhoneNumber("223.456.7890");
 		assertEquals(expectedNumber, actualNumber);
 	}
-
+	
 	@Test
 	public void cleansNumbersWithMultipleSpaces() {
 		final String expectedNumber = "2234567890";
 		final String actualNumber = evaluationService.cleanPhoneNumber("223 456   7890   ");
 		assertEquals(expectedNumber, actualNumber);
 	}
-
+	
 	@Test
 	public void invalidWhenMoreThan11Digits() {
 		expectedException.expect(IllegalArgumentException.class);
 		evaluationService.cleanPhoneNumber("321234567890");
 	}
-
+	
 	@Test
 	public void invalidWithNonNumeric() {
 		expectedException.expect(IllegalArgumentException.class);
@@ -363,7 +363,7 @@ public class EvaluationServiceTest {
 	public void phraseMissingAnotherCharacterIsNotPangram() {
 		assertFalse(evaluationService.isPangram("five boxing wizards jump quickly at it"));
 	}
-
+	
 	
 	/*******************************************************************
 	 * Question 10
@@ -465,31 +465,26 @@ public class EvaluationServiceTest {
 	 * Question 13
 	 ******************************************************************/
 	@Test
-	@Ignore
 	public void validIsbnNumber() {
 		assertTrue(evaluationService.isValidIsbn("3-598-21508-8"));
 	}
 
 	@Test
-	@Ignore
 	public void invalidIsbnCheckDigit() {
 		assertFalse(evaluationService.isValidIsbn("3-598-21508-9"));
 	}
 
 	@Test
-	@Ignore
 	public void validIsbnNumberWithCheckDigitOfTen() {
 		assertTrue(evaluationService.isValidIsbn("3-598-21507-X"));
 	}
 
 	@Test
-	@Ignore
 	public void checkDigitIsACharacterOtherThanX() {
 		assertFalse(evaluationService.isValidIsbn("3-598-21507-A"));
 	}
 
 	@Test
-	@Ignore
 	public void invalidCharacterInIsbn() {
 		assertFalse(evaluationService.isValidIsbn("3-598-2K507-0"));
 	}
@@ -499,35 +494,30 @@ public class EvaluationServiceTest {
 	 * Question 14
 	 ******************************************************************/
 	@Test
-	@Ignore
 	public void modernTime() {
 		assertEquals(LocalDateTime.of(2043, Month.JANUARY, 1, 1, 46, 40),
 				evaluationService.getGigasecondDate(LocalDate.of(2011, Month.APRIL, 25)));
 	}
 
 	@Test
-	@Ignore
 	public void afterEpochTime() {
 		assertEquals(LocalDateTime.of(2009, Month.FEBRUARY, 19, 1, 46, 40),
 				evaluationService.getGigasecondDate(LocalDate.of(1977, Month.JUNE, 13)));
 	}
 
 	@Test
-	@Ignore
 	public void beforeEpochTime() {
 		assertEquals(LocalDateTime.of(1991, Month.MARCH, 27, 1, 46, 40),
 				evaluationService.getGigasecondDate(LocalDate.of(1959, Month.JULY, 19)));
 	}
 
 	@Test
-	@Ignore
 	public void withFullTimeSpecified() {
 		assertEquals(LocalDateTime.of(2046, Month.OCTOBER, 2, 23, 46, 40),
 				evaluationService.getGigasecondDate(LocalDateTime.of(2015, Month.JANUARY, 24, 22, 0, 0)));
 	}
 
 	@Test
-	@Ignore
 	public void withFullTimeSpecifiedAndDayRollover() {
 		assertEquals(LocalDateTime.of(2046, Month.OCTOBER, 3, 1, 46, 39),
 				evaluationService.getGigasecondDate(LocalDateTime.of(2015, Month.JANUARY, 24, 23, 59, 59)));
@@ -537,33 +527,27 @@ public class EvaluationServiceTest {
 	 * Question 15
 	 ******************************************************************/
 	@Test
-	@Ignore
 	public void testSingleAddition1() {
 		assertEquals(2, evaluationService.solveWordProblem("What is 1 plus 1?"));
 	}
 
 	@Test
-	@Ignore
 	public void testSingleAdditionWithNegativeNumbers() {
 		assertEquals(-11, evaluationService.solveWordProblem("What is -1 plus -10?"));
 	}
 
 	@Test
-	@Ignore
 	public void testSingleSubtraction() {
 		assertEquals(16, evaluationService.solveWordProblem("What is 4 minus -12?"));
 	}
 
 	@Test
-	@Ignore
 	public void testSingleMultiplication() {
 		assertEquals(-75, evaluationService.solveWordProblem("What is -3 multiplied by 25?"));
 	}
 
 	@Test
-	@Ignore
 	public void testSingleDivision() {
 		assertEquals(-11, evaluationService.solveWordProblem("What is 33 divided by -3?"));
 	}
-
 }
